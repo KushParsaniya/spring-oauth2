@@ -65,7 +65,7 @@ public class UserManagementConfig {
                 .authorities("SCOPE_read","SCOPE_write")
                 .build();
 
-        return new InMemoryUserDetailsManager(u1);
+        return new InMemoryUserDetailsManager(u1,u2);
     }
 
     @Bean
