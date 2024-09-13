@@ -15,6 +15,7 @@ spring:
             scope:
               - "openid"
               - "read"
+              - "write"
             redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
         provider:
           client-1:

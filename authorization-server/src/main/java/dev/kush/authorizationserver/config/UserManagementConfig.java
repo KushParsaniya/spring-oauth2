@@ -35,7 +35,7 @@ public class UserManagementConfig {
                 .clientSecret("{noop}secret-1")
                 .clientIdIssuedAt(Instant.now())
                 .redirectUri("http://localhost:9091/login/oauth2/code/client-1")
-                .scopes(scopes -> scopes.addAll(List.of("openid","read")))
+                .scopes(scopes -> scopes.addAll(List.of("openid","read","write")))
                 .clientName("Spring Boot Client 1")
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
@@ -58,6 +58,13 @@ public class UserManagementConfig {
                 .password("1234")
                 .authorities("SCOPE_read")
                 .build();
+        UserDetails u2 = User
+                .withDefaultPasswordEncoder()
+                .username("abhi")
+                .password("1234")
+                .authorities("SCOPE_read","SCOPE_write")
+                .build();
+
         return new InMemoryUserDetailsManager(u1);
     }
 

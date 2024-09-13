@@ -24,17 +24,17 @@ public class AuthServerConfig {
         httpSecurity.getConfigurer(OAuth2AuthorizationServerConfigurer.class)
                 .oidc(Customizer.withDefaults());
 
-
         httpSecurity
                 .exceptionHandling(e -> e.defaultAuthenticationEntryPointFor(
                         new LoginUrlAuthenticationEntryPoint("/login"),
                         new MediaTypeRequestMatcher(MediaType.TEXT_HTML)
                 ))
-                .oauth2ResourceServer(resourceServer ->
-                        resourceServer.jwt(Customizer.withDefaults()));
+                .oauth2ResourceServer(rs -> rs
+                        .jwt(Customizer.withDefaults()));
 
         return httpSecurity.build();
     }
+
 
     @Bean
     @Order(2)
