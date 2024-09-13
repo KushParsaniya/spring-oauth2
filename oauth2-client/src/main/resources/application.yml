@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: oauth2-client
+  security:
+    oauth2:
+      client:
+        registration:
+          client-1:
+            client-id: "client-1"
+            client-secret: "secret-1"
+            client-name: "Spring Boot Client 1"
+            client-authentication-method: "client_secret_basic"
+            authorization-grant-type: "authorization_code"
+            provider: "client-1"
+            scope:
+              - "openid"
+              - "read"
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+        provider:
+          client-1:
+            issuer-uri: "http://localhost:9090"
+server:
+  port: 9091
+
+logging:
+  level:
+    root: trace
